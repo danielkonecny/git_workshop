@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
 int main(int argc, char* argv[]) {
 	if(argc != 3) {
@@ -13,12 +14,19 @@ int main(int argc, char* argv[]) {
 		return -2;
 	}
 
-	if((strcmp("-c", argv[1])) == 0) {
+	if (strcmp("-c", argv[1]) == 0 || strcmp("-w", argv[1]) == 0) {
 		unsigned int counter = 0;
 		int character;
 		while((character = fgetc(file)) != EOF) {
-			counter++;
-		}
+			if(strcmp("-w", argv[1]) == 0 && isspace(character)) {
+			counter++;	
+			}
+			else{
+				if(strcmp("-c", argv[1]) == 0) {
+				counter++;
+				}	
+			}
+		} 
 		printf("Count is: %d\n", counter);
 	}
 	return 0;
