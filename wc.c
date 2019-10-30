@@ -2,6 +2,8 @@
 #include <string.h>
 #include <ctype.h>
 
+//tig - stromecek commitu v terminalu
+
 int main(int argc, char* argv[]) {
 	if(argc != 3) {
 		fprintf(stderr, "ERROR: Number of parameters should be 2, not %d!\n", argc-1);
