@@ -16,17 +16,21 @@ int main(int argc, char* argv[]) {
 		return -2;
 	}
 
-	if (strcmp("-c", argv[1]) == 0 || strcmp("-w", argv[1]) == 0 || strcmp("-l", argv[1]) == 0) {
+	int c_opt = strcmp("-c", argv[1]) == 0;
+	int w_opt = strcmp("-w", argv[1]) == 0;
+	int l_opt = strcmp("-l", argv[1]) == 0;
+
+	if(c_opt || w_opt || l_opt) {
 		unsigned int counter = 0;
 		int character;
 		while((character = fgetc(file)) != EOF) {
-			if(strcmp("-w", argv[1]) == 0 && isspace(character)) {
+			if(w_opt && isspace(character)) {
 				counter++;	
 			}
-			else if(strcmp("-l", argv[1]) == 0 && character == '\n') {
+			else if(l_opt && character == '\n') {
 				counter++;
 			}
-			else if(strcmp("-c", argv[1]) == 0) {
+			else if(c_opt) {
 				counter++;
 			}	
 		} 
