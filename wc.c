@@ -13,11 +13,16 @@ int main(int argc, char* argv[]) {
 		return -2;
 	}
 
-	if((strcmp("-c", argv[1])) == 0) {
+	if(strcmp("-c", argv[1]) == 0 || strcmp("-l", argv[1]) == 0) {
 		unsigned int counter = 0;
 		int character;
 		while((character = fgetc(file)) != EOF) {
-			counter++;
+			if(strcmp("-l", argv[1]) == 0 && character == '\n') {
+				counter++;
+			}
+			else if(strcmp("-c", argv[1]) == 0) {
+				counter++;
+			}
 		}
 		printf("Count is: %d\n", counter);
 	}
